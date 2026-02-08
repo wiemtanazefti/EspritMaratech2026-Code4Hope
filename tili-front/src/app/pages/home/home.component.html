@@ -1,0 +1,57 @@
+<div class="home-container">
+  <section class="hero">
+    <div class="hero-slider">
+      <div class="slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+        <div class="slide" *ngFor="let slide of slides; let i = index" [style.background]="slide.color">
+          <div class="slide-content">
+            <h1>{{ slide.title }}</h1>
+            <p>{{ slide.description }}</p>
+            <button class="btn-primary" routerLink="/projets">Découvrir</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="slider-btn prev" (click)="prevSlide()">‹</button>
+      <button class="slider-btn next" (click)="nextSlide()">›</button>
+
+      <div class="indicators">
+        <button *ngFor="let slide of slides; let i = index"
+                [class.active]="i === currentSlide"
+                (click)="goToSlide(i)">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Pourquoi Choisir Tili ?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Suivi en Temps Réel</h3>
+        <p>Visualisez l'avancement de vos projets avec des métriques précises</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>Collaboration</h3>
+        <p>Travaillez en équipe efficacement avec des outils de partage intégrés</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Productivité</h3>
+        <p>Automatisez les tâches répétitives et gagnez du temps</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Prêt à booster votre productivité ?</h2>
+    <p>Commencez gratuitement dès maintenant</p>
+    <div class="cta-buttons">
+      <button class="btn-primary" routerLink="/login">S'inscrire Gratuitement</button>
+      <button class="btn-secondary" routerLink="/projets">Voir la Démo</button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,67 @@
+<div class="documentation-container">
+  <div class="documentation-header">
+    <h1>Centre de Documentation</h1>
+    <p>Accédez à tous vos documents en un seul endroit</p>
+  </div>
+
+  <div *ngIf="error" class="error-banner">
+    {{ error }}
+    <button type="button" (click)="error = null">×</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Chargement des documents…</div>
+
+  <div *ngIf="!loading" class="filters">
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un document...">
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="category-filters">
+      <select [(ngModel)]="selectedCategory">
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && documents.length === 0" class="empty-state">
+    <p>Aucun document pour le moment.</p>
+  </div>
+
+  <div *ngIf="!loading && documents.length > 0" class="documents-table-container">
+    <table class="documents-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of filteredDocuments">
+          <td class="document-name">{{ doc.titre || '—' }}</td>
+          <td>
+            <span class="category-badge">{{ doc.type || '—' }}</span>
+          </td>
+          <td>{{ doc.description || '—' }}</td>
+          <td>{{ formatDate(doc.dateCreation) }}</td>
+          <td class="actions">
+            <button class="btn-download" (click)="downloadDocument(doc)">
+              📥 Télécharger
+            </button>
+            <button class="btn-share" (click)="shareDocument(doc)">
+              🔗 Partager
+            </button>
+            <button class="btn-danger" (click)="deleteDocument(doc)">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

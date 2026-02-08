@@ -1,0 +1,27 @@
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #000;
+}
+
+.app-header {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.app-header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.app-header p {
+  color: #444;
+  font-size: 16px;
+}
+
+.content-zone {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}

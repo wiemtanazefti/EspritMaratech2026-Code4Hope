@@ -1,0 +1,105 @@
+<div class="meetings-container">
+  <div class="meetings-header">
+    <h1>Planification des Réunions</h1>
+    <p>Organisez vos réunions et rejoignez la visioconférence Jitsi</p>
+    <div class="header-actions">
+      <input type="text" [(ngModel)]="displayName" placeholder="Votre nom (pour la visio)" class="display-name-input" />
+      <button class="btn-primary" (click)="openCreateForm()">+ Nouvelle réunion</button>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="error-banner">
+    {{ error }}
+    <button type="button" (click)="error = null">×</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Chargement des réunions…</div>
+
+  <div *ngIf="!loading && meetings.length === 0" class="empty-state">
+    <p>Aucune réunion. Créez-en une pour commencer.</p>
+    <button class="btn-primary" (click)="openCreateForm()">Créer une réunion</button>
+  </div>
+
+  <div *ngIf="!loading && meetings.length > 0" class="meetings-sections">
+    <div class="meetings-section">
+      <h2>À venir ({{ upcomingMeetings.length }})</h2>
+      <div class="meetings-list">
+        <div *ngFor="let meeting of upcomingMeetings" class="meeting-card">
+          <div class="meeting-header">
+            <h3>{{ meeting.title }}</h3>
+            <span class="status-badge a-venir">À venir</span>
+          </div>
+          <p class="meeting-description">{{ meeting.description || '—' }}</p>
+          <div class="meeting-details">
+            <div class="detail">
+              <span class="icon">📅</span>
+              <span>{{ formatDate(meeting.startTime) }}</span>
+            </div>
+            <div class="detail">
+              <span class="icon">🕐</span>
+              <span>{{ formatTime(meeting.startTime) }} – {{ formatTime(meeting.endTime) }}</span>
+            </div>
+          </div>
+          <div class="meeting-actions">
+            <button class="btn-primary" (click)="joinVideo(meeting)">Rejoindre la visio</button>
+            <button class="btn-secondary" (click)="openEditForm(meeting)">Modifier</button>
+            <button class="btn-danger" (click)="deleteMeeting(meeting)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meetings-section">
+      <h2>Terminées ({{ pastMeetings.length }})</h2>
+      <div class="meetings-list">
+        <div *ngFor="let meeting of pastMeetings" class="meeting-card past">
+          <div class="meeting-header">
+            <h3>{{ meeting.title }}</h3>
+            <span class="status-badge termine">Terminé</span>
+          </div>
+          <p class="meeting-description">{{ meeting.description || '—' }}</p>
+          <div class="meeting-details">
+            <div class="detail">
+              <span class="icon">📅</span>
+              <span>{{ formatDate(meeting.startTime) }}</span>
+            </div>
+            <div class="detail">
+              <span class="icon">🕐</span>
+              <span>{{ formatTime(meeting.startTime) }} – {{ formatTime(meeting.endTime) }}</span>
+            </div>
+          </div>
+          <div class="meeting-actions">
+            <button class="btn-secondary">Voir le compte-rendu</button>
+            <button class="btn-danger" (click)="deleteMeeting(meeting)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Create/Edit meeting -->
+  <div *ngIf="showCreateForm" class="modal-overlay" (click)="closeForm()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>{{ editingMeeting ? 'Modifier la réunion' : 'Nouvelle réunion' }}</h3>
+      <form (ngSubmit)="saveMeeting()">
+        <label>Titre <input type="text" [(ngModel)]="formModel.title" name="title" required /></label>
+        <label>Description <textarea [(ngModel)]="formModel.description" name="description" rows="2"></textarea></label>
+        <label>Début <input type="datetime-local" [(ngModel)]="formModel.startTime" name="startTime" required /></label>
+        <label>Fin <input type="datetime-local" [(ngModel)]="formModel.endTime" name="endTime" required /></label>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" (click)="closeForm()">Annuler</button>
+          <button type="submit" class="btn-primary">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Jitsi videoconference overlay -->
+  <div *ngIf="showJitsi" class="jitsi-overlay">
+    <div class="jitsi-header">
+      <span>Visioconférence – {{ activeMeetingForCall?.title }}</span>
+      <button type="button" class="btn-close-jitsi" (click)="closeJitsi()">Fermer la visio</button>
+    </div>
+    <div #jitsiContainer class="jitsi-container"></div>
+  </div>
+</div>

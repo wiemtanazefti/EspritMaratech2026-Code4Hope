@@ -1,0 +1,57 @@
+<div class="projects-container">
+  <div class="projects-header">
+    <h1>Gestion des Projets</h1>
+    <p>Suivez et gérez tous vos projets en un seul endroit</p>
+  </div>
+
+  <div *ngIf="error" class="error-banner">
+    {{ error }}
+    <button type="button" (click)="error = null">×</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Chargement des projets…</div>
+
+  <div *ngIf="!loading" class="filters">
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un projet...">
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="status-filters">
+      <button *ngFor="let status of statusFilters"
+              [class.active]="selectedStatus === status"
+              (click)="selectedStatus = status">
+        {{ status }} ({{ getStatusCount(status) }})
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && projects.length === 0" class="empty-state">
+    <p>Aucun projet pour le moment.</p>
+  </div>
+
+  <div *ngIf="!loading && projects.length > 0" class="projects-grid">
+    <div *ngFor="let project of filteredProjects" class="project-card">
+      <div class="project-header">
+        <h3>{{ project.titre }}</h3>
+        <span class="status-badge" [ngClass]="getStatutClass(project.statut)">
+          {{ getStatutLabel(project.statut) }}
+        </span>
+      </div>
+
+      <p class="project-description">{{ project.description || '—' }}</p>
+
+      <div class="project-details">
+        <div class="detail" *ngIf="project.chefProjet">
+          <span class="label">Chef de projet:</span>
+          <span class="chef">{{ project.chefProjet }}</span>
+        </div>
+      </div>
+
+      <div class="project-actions" *ngIf="project.id && project.statut !== 'TERMINE' && project.statut !== 'ANNULE'">
+        <button class="btn-secondary" (click)="changeStatut(project, 'TERMINE')">Marquer Terminé</button>
+        <button class="btn-danger" (click)="changeStatut(project, 'ANNULE')">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
