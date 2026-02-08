@@ -49,7 +49,7 @@ export class MeetingsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = err?.message || 'Impossible de charger les réunions';
+        this.error = err?.message || 'تعذر تحميل الاجتماعات';
         this.loading = false;
       }
     });
@@ -72,13 +72,13 @@ export class MeetingsComponent implements OnInit, OnDestroy, AfterViewInit {
   formatDate(iso?: string): string {
     if (!iso) return '—';
     const d = new Date(iso);
-    return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString('ar', { day: '2-digit', month: 'short', year: 'numeric' });
   }
 
   formatTime(iso?: string): string {
     if (!iso) return '—';
     const d = new Date(iso);
-    return d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    return d.toLocaleTimeString('ar', { hour: '2-digit', minute: '2-digit' });
   }
 
   joinVideo(meeting: MeetingDto): void {
@@ -91,8 +91,8 @@ export class MeetingsComponent implements OnInit, OnDestroy, AfterViewInit {
     const container = this.jitsiContainer?.nativeElement;
     if (!container) return;
     const roomName = this.activeMeetingForCall?.id
-      ? `Tili-${this.activeMeetingForCall.id}`
-      : `Tili-${this.activeMeetingForCall?.title?.replace(/\s+/g, '') || 'meeting'}-${Date.now()}`;
+      ? `Wasla-${this.activeMeetingForCall.id}`
+      : `Wasla-${this.activeMeetingForCall?.title?.replace(/\s+/g, '') || 'meeting'}-${Date.now()}`;
     this.jitsiService.startMeeting(container, roomName, this.displayName || undefined);
   }
 
@@ -136,10 +136,23 @@ export class MeetingsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   saveMeeting(): void {
+    const title = (this.formModel.title || '').trim();
+    if (!title || title.length < 2) {
+      this.error = 'العنوان مطلوب (حرفين على الأقل)';
+      return;
+    }
     const start = this.formModel.startTime ? new Date(this.formModel.startTime).toISOString() : '';
     const end = this.formModel.endTime ? new Date(this.formModel.endTime).toISOString() : '';
+    if (!start || !end) {
+      this.error = 'وقتا البداية والنهاية مطلوبان';
+      return;
+    }
+    if (new Date(end) <= new Date(start)) {
+      this.error = 'وقت النهاية يجب أن يكون بعد وقت البداية';
+      return;
+    }
     const payload: MeetingDto = {
-      title: this.formModel.title || '',
+      title,
       description: this.formModel.description,
       startTime: start,
       endTime: end
@@ -147,22 +160,22 @@ export class MeetingsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.editingMeeting?.id) {
       this.meetingService.update(this.editingMeeting.id, payload).subscribe({
         next: () => { this.loadMeetings(); this.closeForm(); },
-        error: (err) => this.error = err?.message || 'Erreur lors de la mise à jour'
+        error: (err) => this.error = err?.message || 'خطأ عند التحديث'
       });
     } else {
       this.meetingService.create(payload).subscribe({
         next: () => { this.loadMeetings(); this.closeForm(); },
-        error: (err) => this.error = err?.message || 'Erreur lors de la création'
+        error: (err) => this.error = err?.message || 'خطأ عند الإنشاء'
       });
     }
   }
 
   deleteMeeting(meeting: MeetingDto): void {
     if (!meeting.id) return;
-    if (!confirm('Supprimer cette réunion ?')) return;
+    if (!confirm('حذف هذا الاجتماع؟')) return;
     this.meetingService.delete(meeting.id).subscribe({
       next: () => this.loadMeetings(),
-      error: (err) => this.error = err?.message || 'Erreur lors de la suppression'
+      error: (err) => this.error = err?.message || 'خطأ عند الحذف'
     });
   }
 }

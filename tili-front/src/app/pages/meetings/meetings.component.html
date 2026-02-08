@@ -1,10 +1,10 @@
 <div class="meetings-container">
   <div class="meetings-header">
-    <h1>Planification des Réunions</h1>
-    <p>Organisez vos réunions et rejoignez la visioconférence Jitsi</p>
+    <h1>تخطيط الاجتماعات</h1>
+    <p>نظّم اجتماعاتك وانضم إلى مؤتمر الفيديو (Jitsi)</p>
     <div class="header-actions">
-      <input type="text" [(ngModel)]="displayName" placeholder="Votre nom (pour la visio)" class="display-name-input" />
-      <button class="btn-primary" (click)="openCreateForm()">+ Nouvelle réunion</button>
+      <input type="text" [(ngModel)]="displayName" placeholder="اسمك (للفيديو)" class="display-name-input" />
+      <button class="btn-primary" (click)="openCreateForm()">+ اجتماع جديد</button>
     </div>
   </div>
 
@@ -13,21 +13,21 @@
     <button type="button" (click)="error = null">×</button>
   </div>
 
-  <div *ngIf="loading" class="loading">Chargement des réunions…</div>
+  <div *ngIf="loading" class="loading">جاري تحميل الاجتماعات…</div>
 
   <div *ngIf="!loading && meetings.length === 0" class="empty-state">
-    <p>Aucune réunion. Créez-en une pour commencer.</p>
-    <button class="btn-primary" (click)="openCreateForm()">Créer une réunion</button>
+    <p>لا توجد اجتماعات. أنشئ واحدة للبدء.</p>
+    <button class="btn-primary" (click)="openCreateForm()">إنشاء اجتماع</button>
   </div>
 
   <div *ngIf="!loading && meetings.length > 0" class="meetings-sections">
     <div class="meetings-section">
-      <h2>À venir ({{ upcomingMeetings.length }})</h2>
+      <h2>القادمة ({{ upcomingMeetings.length }})</h2>
       <div class="meetings-list">
         <div *ngFor="let meeting of upcomingMeetings" class="meeting-card">
           <div class="meeting-header">
             <h3>{{ meeting.title }}</h3>
-            <span class="status-badge a-venir">À venir</span>
+            <span class="status-badge a-venir">قادم</span>
           </div>
           <p class="meeting-description">{{ meeting.description || '—' }}</p>
           <div class="meeting-details">
@@ -41,21 +41,21 @@
             </div>
           </div>
           <div class="meeting-actions">
-            <button class="btn-primary" (click)="joinVideo(meeting)">Rejoindre la visio</button>
-            <button class="btn-secondary" (click)="openEditForm(meeting)">Modifier</button>
-            <button class="btn-danger" (click)="deleteMeeting(meeting)">Supprimer</button>
+            <button class="btn-primary" (click)="joinVideo(meeting)">انضم بالفيديو</button>
+            <button class="btn-secondary" (click)="openEditForm(meeting)">تعديل</button>
+            <button class="btn-danger" (click)="deleteMeeting(meeting)">حذف</button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="meetings-section">
-      <h2>Terminées ({{ pastMeetings.length }})</h2>
+      <h2>المنتهية ({{ pastMeetings.length }})</h2>
       <div class="meetings-list">
         <div *ngFor="let meeting of pastMeetings" class="meeting-card past">
           <div class="meeting-header">
             <h3>{{ meeting.title }}</h3>
-            <span class="status-badge termine">Terminé</span>
+            <span class="status-badge termine">منتهي</span>
           </div>
           <p class="meeting-description">{{ meeting.description || '—' }}</p>
           <div class="meeting-details">
@@ -69,36 +69,36 @@
             </div>
           </div>
           <div class="meeting-actions">
-            <button class="btn-secondary">Voir le compte-rendu</button>
-            <button class="btn-danger" (click)="deleteMeeting(meeting)">Supprimer</button>
+            <button class="btn-secondary">عرض المحضر</button>
+            <button class="btn-danger" (click)="deleteMeeting(meeting)">حذف</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal: Create/Edit meeting -->
+  <!-- نافذة إنشاء / تعديل اجتماع -->
   <div *ngIf="showCreateForm" class="modal-overlay" (click)="closeForm()">
     <div class="modal-content" (click)="$event.stopPropagation()">
-      <h3>{{ editingMeeting ? 'Modifier la réunion' : 'Nouvelle réunion' }}</h3>
+      <h3>{{ editingMeeting ? 'تعديل الاجتماع' : 'اجتماع جديد' }}</h3>
       <form (ngSubmit)="saveMeeting()">
-        <label>Titre <input type="text" [(ngModel)]="formModel.title" name="title" required /></label>
-        <label>Description <textarea [(ngModel)]="formModel.description" name="description" rows="2"></textarea></label>
-        <label>Début <input type="datetime-local" [(ngModel)]="formModel.startTime" name="startTime" required /></label>
-        <label>Fin <input type="datetime-local" [(ngModel)]="formModel.endTime" name="endTime" required /></label>
+        <label>العنوان <input type="text" [(ngModel)]="formModel.title" name="title" required /></label>
+        <label>الوصف <textarea [(ngModel)]="formModel.description" name="description" rows="2"></textarea></label>
+        <label>البداية <input type="datetime-local" [(ngModel)]="formModel.startTime" name="startTime" required /></label>
+        <label>النهاية <input type="datetime-local" [(ngModel)]="formModel.endTime" name="endTime" required /></label>
         <div class="modal-actions">
-          <button type="button" class="btn-secondary" (click)="closeForm()">Annuler</button>
-          <button type="submit" class="btn-primary">Enregistrer</button>
+          <button type="button" class="btn-secondary" (click)="closeForm()">إلغاء</button>
+          <button type="submit" class="btn-primary">حفظ</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Jitsi videoconference overlay -->
+  <!-- مؤتمر الفيديو -->
   <div *ngIf="showJitsi" class="jitsi-overlay">
     <div class="jitsi-header">
-      <span>Visioconférence – {{ activeMeetingForCall?.title }}</span>
-      <button type="button" class="btn-close-jitsi" (click)="closeJitsi()">Fermer la visio</button>
+      <span>مؤتمر فيديو – {{ activeMeetingForCall?.title }}</span>
+      <button type="button" class="btn-close-jitsi" (click)="closeJitsi()">إغلاق الفيديو</button>
     </div>
     <div #jitsiContainer class="jitsi-container"></div>
   </div>

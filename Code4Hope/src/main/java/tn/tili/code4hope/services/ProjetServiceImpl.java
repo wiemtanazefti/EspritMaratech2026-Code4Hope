@@ -58,4 +58,9 @@ public class ProjetServiceImpl implements ProjetService {
     public Projet getProjetById(String id) {
         return projetRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void supprimerProjet(String id) {
+        projetRepository.deleteById(id);
+    }
 }

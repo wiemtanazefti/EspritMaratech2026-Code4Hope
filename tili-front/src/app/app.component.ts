@@ -12,5 +12,5 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   `
 })
 export class AppComponent {
-  title = 'Tili';
+  title = 'وصلة';
 }

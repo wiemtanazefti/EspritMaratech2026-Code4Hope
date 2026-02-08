@@ -1,4 +1,4 @@
-package tn.tili.code4hope.service;
+package tn.tili.code4hope.services;
 
 import org.springframework.stereotype.Service;
 import tn.tili.code4hope.entities.Meeting;

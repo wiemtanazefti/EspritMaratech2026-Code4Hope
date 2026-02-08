@@ -10,4 +10,5 @@ public interface ProjetService {
     Projet changerStatut(String idProjet, String statut, String utilisateurId);
     List<Projet> listeProjets();
     Projet getProjetById(String id);
+    void supprimerProjet(String id);
 }

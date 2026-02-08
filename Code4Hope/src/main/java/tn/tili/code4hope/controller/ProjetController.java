@@ -19,18 +19,18 @@ public class ProjetController {
     }
 
     @PostMapping("/creer")
-    public Projet creerProjet(@RequestBody Projet projet, @RequestParam String chefProjet) {
-        return projetService.creerProjet(projet, chefProjet);
+    public Projet creerProjet(@RequestBody Projet projet, @RequestParam(required = false, defaultValue = "") String chefProjet) {
+        return projetService.creerProjet(projet, chefProjet != null ? chefProjet : "");
     }
 
     @PutMapping("/modifier/{id}")
-    public Projet modifierProjet(@PathVariable String id, @RequestBody Projet projet, @RequestParam String chefProjet) {
-        return projetService.modifierProjet(id, projet, chefProjet);
+    public Projet modifierProjet(@PathVariable String id, @RequestBody Projet projet, @RequestParam(required = false, defaultValue = "") String chefProjet) {
+        return projetService.modifierProjet(id, projet, chefProjet != null ? chefProjet : "");
     }
 
     @PutMapping("/changerStatut/{id}")
-    public Projet changerStatut(@PathVariable String id, @RequestParam String statut, @RequestParam String utilisateurId) {
-        return projetService.changerStatut(id, statut, utilisateurId);
+    public Projet changerStatut(@PathVariable String id, @RequestParam String statut, @RequestParam(required = false, defaultValue = "") String utilisateurId) {
+        return projetService.changerStatut(id, statut, utilisateurId != null ? utilisateurId : "");
     }
 
     @GetMapping("/liste")
@@ -41,5 +41,10 @@ public class ProjetController {
     @GetMapping("/{id}")
     public Projet getProjetById(@PathVariable String id) {
         return projetService.getProjetById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimer(@PathVariable String id) {
+        projetService.supprimerProjet(id);
     }
 }

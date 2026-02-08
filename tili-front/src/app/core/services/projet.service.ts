@@ -46,4 +46,8 @@ export class ProjetService {
       {}
     );
   }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.api}/${id}`);
+  }
 }

@@ -1,7 +1,8 @@
 <div class="projects-container">
   <div class="projects-header">
-    <h1>Gestion des Projets</h1>
-    <p>Suivez et gérez tous vos projets en un seul endroit</p>
+    <h1>إدارة المشاريع</h1>
+    <p>تابع وادِر جميع مشاريعك في مكان واحد</p>
+    <button class="btn-primary" (click)="openCreateForm()">+ مشروع جديد</button>
   </div>
 
   <div *ngIf="error" class="error-banner">
@@ -9,11 +10,11 @@
     <button type="button" (click)="error = null">×</button>
   </div>
 
-  <div *ngIf="loading" class="loading">Chargement des projets…</div>
+  <div *ngIf="loading" class="loading">جاري تحميل المشاريع…</div>
 
   <div *ngIf="!loading" class="filters">
     <div class="search-bar">
-      <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un projet...">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="البحث عن مشروع...">
       <span class="search-icon">🔍</span>
     </div>
 
@@ -27,7 +28,7 @@
   </div>
 
   <div *ngIf="!loading && projects.length === 0" class="empty-state">
-    <p>Aucun projet pour le moment.</p>
+    <p>لا توجد مشاريع حالياً.</p>
   </div>
 
   <div *ngIf="!loading && projects.length > 0" class="projects-grid">
@@ -41,17 +42,45 @@
 
       <p class="project-description">{{ project.description || '—' }}</p>
 
-      <div class="project-details">
-        <div class="detail" *ngIf="project.chefProjet">
-          <span class="label">Chef de projet:</span>
+      <div class="project-details" *ngIf="project.chefProjet">
+        <div class="detail">
+          <span class="label">مدير المشروع:</span>
           <span class="chef">{{ project.chefProjet }}</span>
         </div>
       </div>
 
-      <div class="project-actions" *ngIf="project.id && project.statut !== 'TERMINE' && project.statut !== 'ANNULE'">
-        <button class="btn-secondary" (click)="changeStatut(project, 'TERMINE')">Marquer Terminé</button>
-        <button class="btn-danger" (click)="changeStatut(project, 'ANNULE')">Annuler</button>
+      <div class="project-actions">
+        <button class="btn-edit" (click)="openEditForm(project)">تعديل</button>
+        <button *ngIf="project.id && project.statut !== 'TERMINE' && project.statut !== 'ANNULE'" class="btn-secondary" (click)="changeStatut(project, 'TERMINE')">إنهاء</button>
+        <button *ngIf="project.id && project.statut !== 'ANNULE'" class="btn-warn" (click)="changeStatut(project, 'ANNULE')">إلغاء</button>
+        <button *ngIf="project.id" class="btn-danger" (click)="deleteProject(project)">حذف</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal إنشاء / تعديل -->
+  <div *ngIf="showForm" class="modal-overlay" (click)="closeForm()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>{{ editingProject ? 'تعديل المشروع' : 'مشروع جديد' }}</h3>
+      <form (ngSubmit)="saveProject()">
+        <div class="form-group">
+          <label>العنوان <span class="required">*</span></label>
+          <input type="text" [(ngModel)]="formModel.titre" name="titre" required minlength="2" placeholder="عنوان المشروع">
+          <span *ngIf="formErrors['titre']" class="error-msg">{{ formErrors['titre'] }}</span>
+        </div>
+        <div class="form-group">
+          <label>الوصف</label>
+          <textarea [(ngModel)]="formModel.description" name="description" rows="3" placeholder="وصف المشروع"></textarea>
+        </div>
+        <div class="form-group">
+          <label>مدير المشروع</label>
+          <input type="text" [(ngModel)]="formModel.chefProjet" name="chefProjet" placeholder="اسم مدير المشروع">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" (click)="closeForm()">إلغاء</button>
+          <button type="submit" class="btn-primary">حفظ</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

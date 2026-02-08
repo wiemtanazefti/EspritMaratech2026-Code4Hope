@@ -12,9 +12,9 @@ import { RouterModule } from '@angular/router';
 export class HomeComponent {
   currentSlide = 0;
   slides = [
-    { title: 'Gestion de Projets', description: 'Organisez vos projets efficacement', color: '#6b5ce7' },
-    { title: 'Réunions Productives', description: 'Planifiez vos réunions en toute simplicité', color: '#a29bfe' },
-    { title: 'Documentation Centralisée', description: 'Tous vos documents au même endroit', color: '#74b9ff' }
+    { title: 'إدارة المشاريع', description: 'نظّم مشاريعك بفعالية', color: '#6b5ce7' },
+    { title: 'اجتماعات منتجة', description: 'خطّط لاجتماعاتك بكل سهولة', color: '#a29bfe' },
+    { title: 'وثائق مركزية', description: 'كل وثائقك في مكان واحد', color: '#74b9ff' }
   ];
 
   nextSlide() {

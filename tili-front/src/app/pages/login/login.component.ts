@@ -35,7 +35,7 @@ export class LoginComponent {
 
   onRegisterSubmit() {
     if (this.registerData.password !== this.registerData.confirmPassword) {
-      alert('Les mots de passe ne correspondent pas');
+      alert('كلمتا المرور غير متطابقتين');
       return;
     }
     console.log('Register attempt:', this.registerData);

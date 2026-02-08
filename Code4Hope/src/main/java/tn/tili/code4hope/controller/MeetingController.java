@@ -2,7 +2,7 @@ package tn.tili.code4hope.controller;
 
 import org.springframework.web.bind.annotation.*;
 import tn.tili.code4hope.entities.Meeting;
-import tn.tili.code4hope.service.MeetingService;
+import tn.tili.code4hope.services.MeetingService;
 
 import java.util.List;
 

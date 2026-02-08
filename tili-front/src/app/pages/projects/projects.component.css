@@ -191,6 +191,55 @@
   background: #f8f9fa;
 }
 
+.btn-edit {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: #6b5ce7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-edit:hover {
+  background: #5a4bd4;
+}
+
+.btn-warn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: #fdcb6e;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-warn:hover {
+  background: #f0b84d;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1rem;
+}
+
+.modal-content .form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.modal-content .required {
+  color: #d63031;
+}
+
+.modal-content .error-msg {
+  color: #d63031;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 0.25rem;
+}
+
 .btn-danger {
   padding: 0.5rem 1rem;
   border-radius: 6px;

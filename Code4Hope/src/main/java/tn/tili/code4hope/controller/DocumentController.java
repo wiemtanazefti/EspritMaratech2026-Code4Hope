@@ -2,7 +2,7 @@ package tn.tili.code4hope.controller;
 
 import org.springframework.web.bind.annotation.*;
 import tn.tili.code4hope.entities.Document;
-import tn.tili.code4hope.service.DocumentService;
+import tn.tili.code4hope.services.DocumentService;
 
 import java.util.List;
 

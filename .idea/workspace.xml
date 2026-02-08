@@ -6,24 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="9d7d03bb-289b-496e-bb3a-987294b1f47d" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../.idea/Tili.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tili-front/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tili-front/src/environments/environment_development.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/controller/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/controller/DocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/controller/MeetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/controller/MeetingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/controller/ProjetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/controller/ProjetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/DocumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/MeetingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/MeetingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/ProjetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/ProjetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/ProjetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code4Hope/src/main/java/tn/tili/code4hope/services/ProjetServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tili-front/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tili-front/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/app.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tili-front/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tili-front/src/app/components/navbar/navbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/components/navbar/navbar.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/components/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/components/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tili-front/src/app/core/services/document.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/core/services/document.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tili-front/src/app/core/services/projet.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/core/services/projet.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/documentation/documentation.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/documentation/documentation.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/documentation/documentation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/documentation/documentation.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/documentation/documentation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/documentation/documentation.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/meetings/meetings.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/meetings/meetings.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/meetings/meetings.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/meetings/meetings.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/meetings/meetings.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/meetings/meetings.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tili-front/src/app/pages/projects/projects.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/tili-front/src/app/pages/projects/projects.component.css" afterDir="false" />
@@ -118,7 +122,7 @@
       <option name="presentableId" value="Default" />
       <updated>1769951226578</updated>
       <workItem from="1770409516159" duration="43000" />
-      <workItem from="1770539996599" duration="817000" />
+      <workItem from="1770539996599" duration="1938000" />
     </task>
     <servers />
   </component>

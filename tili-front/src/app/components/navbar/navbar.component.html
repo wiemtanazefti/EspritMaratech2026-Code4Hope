@@ -1,24 +1,24 @@
 <nav class="navbar">
   <div class="container">
     <a routerLink="/" class="logo" (click)="closeMenu()">
-      <span class="brand">Tili</span>
+      <span class="brand">وصلة</span>
     </a>
 
     <div class="nav-links">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        Accueil
+        الرئيسية
       </a>
       <a routerLink="/projets" routerLinkActive="active">
-        Projets
+        المشاريع
       </a>
       <a routerLink="/reunions" routerLinkActive="active">
-        Réunions
+        الاجتماعات
       </a>
       <a routerLink="/documentation" routerLinkActive="active">
-        Documentation
+        الوثائق
       </a>
       <a routerLink="/login" class="btn-login">
-        Connexion
+        تسجيل الدخول
       </a>
     </div>
 
@@ -31,19 +31,19 @@
 
   <div class="mobile-menu" [class.active]="isMenuOpen">
     <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
-      Accueil
+      الرئيسية
     </a>
     <a routerLink="/projets" routerLinkActive="active" (click)="closeMenu()">
-      Projets
+      المشاريع
     </a>
     <a routerLink="/reunions" routerLinkActive="active" (click)="closeMenu()">
-      Réunions
+      الاجتماعات
     </a>
     <a routerLink="/documentation" routerLinkActive="active" (click)="closeMenu()">
-      Documentation
+      الوثائق
     </a>
     <a routerLink="/login" class="btn-login" (click)="closeMenu()">
-      Connexion
+      تسجيل الدخول
     </a>
   </div>
 </nav>
