@@ -27,8 +27,7 @@ Nom : M. Mohamed Aziz Awadhi
 
 Rôle : Chef de Projet
 
-Contact : awadhiaziz2@gmail.com
- | 51 467 308
+Contact : awadhiaziz2@gmail.com    | 51 467 308
 
 ## Objectif du projet
 
